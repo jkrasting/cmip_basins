@@ -2,6 +2,7 @@ import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import numpy as np
 import regionmask
+import xarray as xr
 
 
 melbourne = (145.0, -37.8)
@@ -188,17 +189,33 @@ basins = regionmask.Regions(
 )
 
 # define 1x1 grid
-lon = np.arange(0.5, 360.5)
-lat = np.arange(89.5, -90.5, -1)
+# lon = np.arange(0.5, 360.5)
+# lat = np.arange(89.5, -90.5, -1)
 
 # make plot
-fig = plt.figure(figsize=(25, 10))
-ax = plt.subplot(111, projection=ccrs.PlateCarree())
-mask = basins.mask(lon, lat)
+# fig = plt.figure(figsize=(25, 10))
+# ax = plt.subplot(111, projection=ccrs.PlateCarree())
+# mask = basins.mask(lon, lat)
 # pcolormesh does not handle NaNs, requires masked array
-mask_ma = np.ma.masked_invalid(mask)
-h = ax.pcolormesh(lon, lat, mask_ma, transform=ccrs.PlateCarree(), cmap="jet",)
-basins.plot_regions(ax=ax, add_label=False)
-ax.coastlines()
+# mask_ma = np.ma.masked_invalid(mask)
+# h = ax.pcolormesh(lon, lat, mask_ma, transform=ccrs.PlateCarree(), cmap="jet",)
+# basins.plot_regions(ax=ax, add_label=False)
+# ax.coastlines()
 
-plt.savefig("basins.png")
+# plt.savefig("basins.png")
+
+
+def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet"):
+
+    lon = grid[lon]
+    lat = grid[lat]
+
+    codes = basins.mask(lon, lat)
+
+    if mask in grid:
+        masked = grid[mask].values
+        codes = xr.where(masked == 0, 0, codes)
+    else:
+        codes.fillna(0)
+
+    return codes
