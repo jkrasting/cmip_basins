@@ -4,11 +4,29 @@ import numpy as np
 import regionmask
 import xarray as xr
 
+# basins codes used:
+
+ind_SO = 1   # Southern Ocean
+ind_ATL = 2  # Atlantic Ocean
+ind_PAC = 3  # Pacific Ocean
+ind_ARC = 4  # Arctic Ocean
+ind_IND = 5  # Indian Ocean
+ind_MED = 6  # Mediterranean Sea
+ind_BLK = 7  # Black Sea
+ind_HUD = 8  # Hudson Bay
+ind_BAL = 9  # Baltic Sea
+ind_RED = 10 # Red Sea
+ind_PER = 11 # Persian Gulf
+ind_tmp = 99 # to merge 2 parts of Pacific
+
+
+# polygon points:
 
 melbourne = (145.0, -37.8)
 cape_town = (18.4, -33.9)
 
 perth = (115.9, -32.0)  # lon
+
 
 SO = np.array(
     [
@@ -184,33 +202,24 @@ PER = np.array(
     ]
 )
 
+
+
 basins = regionmask.Regions(
-    [SO, ATL, PAC1, PAC2, ARC, IND, MED, BLK, HUD, BAL, RED, PER]
+    [SO, ATL, PAC1, PAC2, ARC, IND, MED, BLK, HUD, BAL, RED, PER],
+    [ind_SO, ind_ATL, ind_tmp, ind_PAC, ind_ARC, ind_IND, ind_MED,
+     ind_BLK, ind_HUD, ind_BAL, ind_RED, ind_PER]
 )
 
-# define 1x1 grid
-# lon = np.arange(0.5, 360.5)
-# lat = np.arange(89.5, -90.5, -1)
-
-# make plot
-# fig = plt.figure(figsize=(25, 10))
-# ax = plt.subplot(111, projection=ccrs.PlateCarree())
-# mask = basins.mask(lon, lat)
-# pcolormesh does not handle NaNs, requires masked array
-# mask_ma = np.ma.masked_invalid(mask)
-# h = ax.pcolormesh(lon, lat, mask_ma, transform=ccrs.PlateCarree(), cmap="jet",)
-# basins.plot_regions(ax=ax, add_label=False)
-# ax.coastlines()
-
-# plt.savefig("basins.png")
 
 
 def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet"):
 
-    lon = grid[lon]
+    lon_raw = grid[lon]
+    lon = xr.where(lon_raw < -180, lon_raw+360., lon_raw)
     lat = grid[lat]
 
     codes = basins.mask(lon, lat)
+    codes = xr.where(codes == ind_tmp, ind_PAC, codes) # join PAC1 and PAC2
 
     if mask in grid:
         masked = grid[mask].values
@@ -218,4 +227,40 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet"):
     else:
         codes.fillna(0)
 
+    codes['lon'] = lon_raw
     return codes
+
+
+
+if __name__ == '__main__':
+
+    # define 1x1 grid
+    lon = np.arange(0.5, 360.5)
+    lat = np.arange(89.5, -90.5, -1)
+
+    # make plot
+    fig = plt.figure(figsize=(25, 10))
+    ax = plt.subplot(111, projection=ccrs.PlateCarree())
+    mask = basins.mask(lon, lat)
+    mask =xr.where(mask == ind_tmp, ind_PAC, mask)
+
+    # pcolormesh does not handle NaNs, requires masked array
+    mask_ma = np.ma.masked_invalid(mask)
+    h = ax.pcolormesh(lon, lat, mask_ma, transform=ccrs.PlateCarree(), cmap="jet",)
+    basins.plot_regions(ax=ax, add_label=False)
+    ax.coastlines()
+
+    plt.show()
+    #plt.savefig("basins.png")
+
+    grid = xr.Dataset()
+    grid['lon'] = xr.DataArray(lon, dims=('lon'))
+    grid['lat'] = xr.DataArray(lat, dims=('lat'))
+    codes = generate_basin_codes(grid, lon='lon', lat='lat')
+
+    plt.figure()
+    ax = plt.subplot(111, projection=ccrs.PlateCarree())
+    codes.plot(ax=ax, x='lon',y='lat', cmap='tab20')
+    ax.coastlines()
+
+    plt.show()
