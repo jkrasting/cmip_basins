@@ -332,7 +332,7 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=F
     mask : str
         name of mask array in grid
 
-    persian : bool (default=True)
+    persian : bool (default=False)
         have persian gulf as separate code, else merge with indian ocean
 
     Returns
