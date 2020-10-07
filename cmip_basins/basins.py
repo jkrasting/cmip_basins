@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import numpy as np
 import regionmask
 import xarray as xr
+import argparse
 
 # basins codes used:
 
@@ -295,7 +298,7 @@ PER = np.array(
 )
 
 
-basins = regionmask.Regions(
+dbasins = regionmask.Regions(
     [SO, ATL, PAC1, PAC2, ARC, IND, MED, BLK, HUD, BAL, RED, PER],
     [
         ind_SO,
@@ -346,7 +349,7 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=F
     lon = xr.where(lon_raw < -180, lon_raw + 360.0, lon_raw)
     lat = grid[lat]
 
-    codes = basins.mask(lon, lat)
+    codes = dbasins.mask(lon, lat)
     codes = xr.where(codes == ind_tmp, ind_PAC, codes)  # join PAC1 and PAC2
 
     # add persian gulf to indian ocean
@@ -365,39 +368,56 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=F
 
 if __name__ == "__main__":
 
-    # define 1x1 grid
-    lon = np.arange(0.5, 360.5)
-    lat = np.arange(89.5, -90.5, -1)
-
-    # make plot
-    fig = plt.figure(figsize=(25, 10))
-    ax = plt.subplot(111, projection=ccrs.PlateCarree())
-    mask = basins.mask(lon, lat)
-    mask = xr.where(mask == ind_tmp, ind_PAC, mask)
-
-    # pcolormesh does not handle NaNs, requires masked array
-    mask_ma = np.ma.masked_invalid(mask)
-    h = ax.pcolormesh(
-        lon,
-        lat,
-        mask_ma,
-        transform=ccrs.PlateCarree(),
-        cmap="jet",
+    parser = argparse.ArgumentParser(
+        description="Adds cmip basin codes to grid file"
     )
-    basins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
-    ax.coastlines()
 
-    plt.show()
-    # plt.savefig("basins.png")
+    parser.add_argument(
+        "grid_file",
+        metavar="grid_file",
+        type=str,
+        help="Grid file for which to create basin codes",
+    )
+    parser.add_argument(
+        "--lon",
+        type=str,
+        required=False,
+        default='geolon',
+        help="name of longitude variable to use",
+    )
+    parser.add_argument(
+        "--lat",
+        type=str,
+        required=False,
+        default='geolat',
+        help="name of latitude variable to use",
+    )
+    parser.add_argument(
+        "--mask",
+        type=str,
+        required=False,
+        default='wet',
+        help="name of mask variable to use",
+    )
+    parser.add_argument(
+        "-o",
+        "--fileout",
+        type=str,
+        required=False,
+        default="basin_codes.nc",
+        help="name of output file with basin codes added",
+    )
 
-    grid = xr.Dataset()
-    grid["lon"] = xr.DataArray(lon, dims=("lon"))
-    grid["lat"] = xr.DataArray(lat, dims=("lat"))
-    codes = generate_basin_codes(grid, lon="lon", lat="lat")
+    args = vars(parser.parse_args())
+    print(f"generating basin codes...")
 
-    plt.figure()
-    ax = plt.subplot(111, projection=ccrs.PlateCarree())
-    codes.plot(ax=ax, x="lon", y="lat", cmap="tab20")
-    ax.coastlines()
+    grid = xr.open_dataset(args['grid_file'])
+    fileout = args['fileout']
+    args.pop('grid_file')
+    args.pop('fileout')
 
-    plt.show()
+    grid['basin'] = generate_basin_codes(grid, **args)
+
+    grid['basin'].attrs = {"flag_meanings": "1:Southern Ocean, 2:Atlantic Ocean, 3:Pacific Ocean, 4:Arctic Ocean, 5:Indian Ocean, 6:Mediterranean Sea, 7:Black Sea, 8:Hudson Bay, 9:Baltic Sea, 10:Red Sea, 11:Persian Gulf",
+		           "flag_values": "1,2,3,4,5,6,7,8,9,10,11"}
+    grid.to_netcdf(fileout, format='NETCDF3_64BIT')
