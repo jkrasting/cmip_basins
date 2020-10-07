@@ -314,7 +314,7 @@ basins = regionmask.Regions(
 )
 
 
-def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=True):
+def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=False):
     """generate CMIP6 basin codes
 
     Parameters
