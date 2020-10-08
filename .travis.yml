@@ -25,4 +25,4 @@ install:
 
 script:
   - py.test cmip_basins
-  - black --check om4labs
+  - black --check cmip_basins
