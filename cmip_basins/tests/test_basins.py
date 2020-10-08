@@ -1,13 +1,18 @@
+"""Module for testing"""
+
 import pytest
 import xarray as xr
 import numpy as np
-from cmip_basins import basins
+from cmip_basins import generate_basin_codes
 
 
 @pytest.mark.parametrize("persian", [True, False])
 def test_generate_basin_codes(persian):
+    """Unit tests
 
-    from cmip_basins.basins import generate_basin_codes
+    Args:
+        persian (bool): logical to include Persian Gulf in Indian basin
+    """
 
     # define 1x1 grid
     lon = np.arange(0.5, 360.5)

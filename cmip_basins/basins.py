@@ -1,26 +1,27 @@
 #!/usr/bin/env python
 
-import cartopy.crs as ccrs
-import matplotlib.pyplot as plt
+"""basins module that includes definitions and creation function """
+
+
+import argparse
 import numpy as np
 import regionmask
 import xarray as xr
-import argparse
 
 # basins codes used:
 
-ind_SO = 1  # Southern Ocean
-ind_ATL = 2  # Atlantic Ocean
-ind_PAC = 3  # Pacific Ocean
-ind_ARC = 4  # Arctic Ocean
-ind_IND = 5  # Indian Ocean
-ind_MED = 6  # Mediterranean Sea
-ind_BLK = 7  # Black Sea
-ind_HUD = 8  # Hudson Bay
-ind_BAL = 9  # Baltic Sea
-ind_RED = 10  # Red Sea
-ind_PER = 11  # Persian Gulf
-ind_tmp = 99  # to merge 2 parts of Pacific
+IND_SO = 1  # Southern Ocean
+IND_ATL = 2  # Atlantic Ocean
+IND_PAC = 3  # Pacific Ocean
+IND_ARC = 4  # Arctic Ocean
+IND_IND = 5  # Indian Ocean
+IND_MED = 6  # Mediterranean Sea
+IND_BLK = 7  # Black Sea
+IND_HUD = 8  # Hudson Bay
+IND_BAL = 9  # Baltic Sea
+IND_RED = 10  # Red Sea
+IND_PER = 11  # Persian Gulf
+IND_TMP = 99  # to merge 2 parts of Pacific
 
 
 # polygon points:
@@ -301,18 +302,18 @@ PER = np.array(
 dbasins = regionmask.Regions(
     [SO, ATL, PAC1, PAC2, ARC, IND, MED, BLK, HUD, BAL, RED, PER],
     [
-        ind_SO,
-        ind_ATL,
-        ind_tmp,
-        ind_PAC,
-        ind_ARC,
-        ind_IND,
-        ind_MED,
-        ind_BLK,
-        ind_HUD,
-        ind_BAL,
-        ind_RED,
-        ind_PER,
+        IND_SO,
+        IND_ATL,
+        IND_TMP,
+        IND_PAC,
+        IND_ARC,
+        IND_IND,
+        IND_MED,
+        IND_BLK,
+        IND_HUD,
+        IND_BAL,
+        IND_RED,
+        IND_PER,
     ],
 )
 
@@ -350,11 +351,11 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=F
     lat = grid[lat]
 
     codes = dbasins.mask(lon, lat)
-    codes = xr.where(codes == ind_tmp, ind_PAC, codes)  # join PAC1 and PAC2
+    codes = xr.where(codes == IND_TMP, IND_PAC, codes)  # join PAC1 and PAC2
 
     # add persian gulf to indian ocean
     if not persian:
-        codes = xr.where(codes == ind_PER, ind_IND, codes)
+        codes = xr.where(codes == IND_PER, IND_IND, codes)
 
     if mask in grid:
         masked = grid[mask].values
@@ -407,17 +408,24 @@ if __name__ == "__main__":
     )
 
     args = vars(parser.parse_args())
-    print(f"generating basin codes...")
+    print("generating basin codes...")
 
-    grid = xr.open_dataset(args["grid_file"])
+    Grid = xr.open_dataset(args["grid_file"])
     fileout = args["fileout"]
     args.pop("grid_file")
     args.pop("fileout")
 
-    grid["basin"] = generate_basin_codes(grid, **args)
+    Grid["basin"] = generate_basin_codes(Grid, **args)
 
-    grid["basin"].attrs = {
-        "flag_meanings": "1:Southern Ocean, 2:Atlantic Ocean, 3:Pacific Ocean, 4:Arctic Ocean, 5:Indian Ocean, 6:Mediterranean Sea, 7:Black Sea, 8:Hudson Bay, 9:Baltic Sea, 10:Red Sea, 11:Persian Gulf",
+    Grid["basin"].attrs = {
+        "flag_meanings": "1:Southern Ocean, 2:Atlantic Ocean, "
+        + "3:Pacific Ocean, 4:Arctic Ocean, "
+        + "5:Indian Ocean, 6:Mediterranean Sea, "
+        + "7:Black Sea, 8:Hudson Bay, 9:Baltic Sea, "
+        + "10:Red Sea, 11:Persian Gulf",
         "flag_values": "1,2,3,4,5,6,7,8,9,10,11",
     }
-    grid.to_netcdf(fileout, format="NETCDF3_64BIT")
+    Grid.to_netcdf(fileout, format="NETCDF3_64BIT")
+
+
+__all__ = ["generate_basin_codes"]
