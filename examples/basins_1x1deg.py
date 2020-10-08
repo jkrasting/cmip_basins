@@ -16,13 +16,7 @@ mask = xr.where(mask == ind_tmp, ind_PAC, mask)
 
 # pcolormesh does not handle NaNs, requires masked array
 mask_ma = np.ma.masked_invalid(mask)
-h = ax.pcolormesh(
-    lon,
-    lat,
-    mask_ma,
-    transform=ccrs.PlateCarree(),
-    cmap="jet",
-)
+h = ax.pcolormesh(lon, lat, mask_ma, transform=ccrs.PlateCarree(), cmap="jet",)
 dbasins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
 ax.coastlines()
 
@@ -40,4 +34,3 @@ codes.plot(ax=ax, x="lon", y="lat", cmap="tab20")
 ax.coastlines()
 
 plt.show()
-

@@ -1,4 +1,4 @@
-''' setup for cmip_basins '''
+""" setup for cmip_basins """
 import setuptools
 
 setuptools.setup(
@@ -10,6 +10,6 @@ setuptools.setup(
     license="",
     keywords="",
     url="",
-    packages=['cmip_basins'],
-    scripts=['cmip_basins/basins.py']
+    packages=["cmip_basins"],
+    scripts=["cmip_basins/basins.py"],
 )
