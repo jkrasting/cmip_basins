@@ -1,0 +1,12 @@
+name: repro
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - black
+  - cartopy
+  - matplotlib
+  - numpy
+  - pytest
+  - regionmask
+  - xarray
