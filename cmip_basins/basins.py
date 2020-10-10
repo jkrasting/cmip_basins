@@ -21,8 +21,14 @@ IND_HUD = 8  # Hudson Bay
 IND_BAL = 9  # Baltic Sea
 IND_RED = 10  # Red Sea
 IND_PER = 11  # Persian Gulf
-IND_TMP = 99  # to merge 2 parts of Pacific
-
+IND_SJKES = 12  # Sea of Japan / Korean East Sea
+IND_OKH = 13  # Sea of Okhotsk
+IND_MEASR = 14  # Margnal East Asian Sea Region
+IND_BER = 15  # Bering Sea
+IND_NOR = 16  # Nordic Seas
+IND_GOM = 17  # Gulf of Mexico
+IND_TMP1 = 98  # to merge 2 parts of Pacific
+IND_TMP2 = 99  # to merge 2 parts of Bering
 
 # polygon points:
 
@@ -127,6 +133,8 @@ PAC2 = np.array(
         [180.0, melbourne[1]],
         [melbourne[0], melbourne[1]],
         [melbourne[0], -30],
+        [125.9, -11.2],  # darwin
+        [124.3, -9.9],  # timor
         [123.1, -10.7],  # rote island
         [119.95, -9.75],  # Sumba Regency
         [117.31, -8.73],  # West Nusa
@@ -222,6 +230,8 @@ IND = np.array(
         [117.31, -8.73],  # West Nusa
         [119.95, -9.75],  # Sumba Regency
         [123.1, -10.7],  # rote island
+        [124.3, -9.9],  # timor
+        [125.9, -11.2],  # darwin
         [melbourne[0], -30],
         [perth[0], -30],
         [perth[0], cape_town[1]],
@@ -298,13 +308,210 @@ PER = np.array(
     ]
 )
 
+SJKES = np.array(
+    [
+        [129.2, 35.2],  # tongyeong
+        [130.0, 33.6],  # fukuoka
+        [135.4, 34.7],  # osaka
+        [139.5, 37.4],  # fukushima
+        [140.0, 40.9],  # aomori
+        [139.9, 42.4],  # imakane
+        [140.2, 42.7],  # kuromatsunai
+        [141.5, 43.3],  # hokkaido
+        [141.7, 45.3],  # wakkanai
+        [142.1, 46.1],  # shebunino
+        [142.5, 47.1],  # sinegorsk
+        [142.4, 48.9],  # medvezh'ye
+        [142.4, 53.4],  # zaliv baykal
+        [140.7, 53.1],  # nikolaevsk
+        # [133.6, 43.5],  # primosky krai
+        [126.4, 43.9],  # jilin city
+        [126.9, 37.6],  # seoul
+    ]
+)
+
+OKH = np.array(
+    [
+        [156.1, 50.7],  # severo-kurislk
+        [145.2, 43.3],  # nemuro
+        [141.5, 43.3],  # hokkaido
+        [141.7, 45.3],  # wakkanai
+        [142.1, 46.1],  # shebunino
+        [142.5, 47.1],  # sinegorsk
+        [142.4, 48.9],  # medvezh'ye
+        [142.4, 53.4],  # zaliv baykal
+        [140.7, 53.1],  # nikolaevsk
+        [135.9, 53.1],  # burukan
+        [130.2, 58.2],  # sakha
+        [164.8, 64.5],  # penzhinsky, kamchatka
+        [165.0, 61.4],  # kamchatka
+        [162.6, 60.3],  # kamchatka
+        [160.1, 58.2],  # kamchatka
+        [156.8, 55.8],  # kamchatka
+    ]
+)
+
+MEASR = np.array(
+    [
+        [126.4, 43.9],  # jilin city
+        [98.8, 23.0],  # mangmao
+        [99.07, 16.73],  # Tak, Thailand
+        [98.8, 9.1],  # surat thani
+        [98.86, 9.03],  # Thailand
+        [103.85, 1.69],  # singapore
+        [102.19, 0.07],  # Sumatra
+        [105.39, -5.25],  # south Sumatra
+        [106.41, -6.56],  # west Java
+        [113.95, -8.09],  # east Java
+        [115.18, -8.45],  # Bali
+        [116.33, -8.60],  # Lombok
+        [117.31, -8.73],  # West Nusa
+        [119.95, -9.75],  # Sumba Regency
+        [123.1, -10.7],  # rote island
+        [126.9, -8.5],  # timor
+        [137.6, -8.2],  # dolok
+        [142.9, -8.0],  # balimo
+        [146.9, -6.7],  # lae
+        [137.7, -2.0],
+        [134.9, -3.7],  # gariau
+        [132.9, -1.3],  # west papau
+        [131.0, -0.2],  # waigeo
+        [128.5, 2.3],  # morotai island
+        [126.3, 7.4],  # caraga
+        [125.3, 12.2],  # samar island
+        [122.1, 18.4],  # santa ana, luzon
+        [120.8, 21.9],  # southern tip taiwan
+        [121.9, 25.0],  # gongliao taiwan
+        [130.0, 30.8],  # kagoshima
+        [130.0, 33.6],  # fukuoka
+        [129.2, 35.2],  # tongyeong
+        [126.9, 37.6],  # seoul
+        [126.4, 43.9],  # jilin city
+    ]
+)
+
+BER1 = np.array(
+    [
+        [163.7, 55.9],  # kamchatka
+        [166.0, 55.0],  # bering island
+        [173.1, 52.8],  # attu station
+        [180.0, 51.3],
+        [180.0, 67.0],
+        [167.0, 63.0],
+        [162.4, 60.1],
+        [160.4, 57.4],
+    ]
+)
+
+BER2 = np.array(
+    [
+        [-180.0, 67.0],
+        [-169.7, 66.0],  # naukan
+        [-168.1, 65.6],  # wales
+        [-156.4, 65.7],  # husila
+        [-156.6, 58.1],  # becharof lake
+        [-158.1, 56.9],  # aniakchak
+        [-160.2, 55.8],
+        [-164.6, 54.5],
+        [-166.7, 53.5],  # unalaska isalnd
+        [-169.0, 53.0],  # nikolski
+        [-174.3, 52.2],  # atka
+        [-176.6, 51.9],  # adak
+        [-178.5, 51.8],  # tanaga island
+        [-180.0, 51.3],
+    ]
+)
+
+NOR = np.array(
+    [
+        [-7.2, 62.0],  # faroe
+        [-23.7, 64.8],  # iceland
+        [-22.0, 70.5],  # ittoqqortoormiit
+        [-30.0, 78.5],
+        [-11.9, 81.5],
+        [15.7, 78.3],  # svalbard
+        [21.30, 68.04],  # North Sweden
+        # [15.1, 65.0],  # sweden
+        # [12.5, 59.3],  # karlstad
+        # [13.8, 56.2],  # skane
+        # [9.3, 55.0],  # aabenraa
+        [15.1, 65.0],  # sweden
+        [14.49, 56.99],  # South Sweden
+        [12.56, 56.04],  # Helsinger
+        [12.29, 55.63],  # Copenhagen
+        [11.60, 55.49],  # Zealand
+        [10.72, 55.32],  # Funen
+        [9.23, 54.79],  # Flensburg
+        [9.82, 53.50],  # Hamburg
+        [2.3, 47.1],  # bourges
+        [6.1, 49.6],  # luxembourg
+        [-0.2, 51.5],  # london
+        [-4.3, 57.5],  # inverness
+    ]
+)
+
+GOM = np.array(
+    [
+        [-68.1, 7],  # venezuela
+        [-75.68, 6.22],  # Medellin, Columbia
+        [-77.68, 8.12],  # Yaviza, Panama
+        [-79.08, 9.32],  # Guna Yala, Panama
+        [-81.29, 8.31],  # Veraguas, Panama
+        [-83.76, 9.82],  # Costa Rica
+        [-86.09, 12.14],  # Nicaragua
+        [-88.42, 14.12],  # Honduras/El Sal
+        [-90.77, 15.10],  # Quiche, Guatemala
+        [-96.04, 17.56],  # Oaxaca, MX
+        [-99.1, 19.4],  # mexico city
+        [-106.7, 35.1],  # albequerque
+        [-83.6, 32.8],  # macon
+        [-81.4, 28.4],  # orlando
+        [-80.5, 25.1],  # key largo
+        [-80.8, 23.1],  # la teja
+        [-77.9, 21.4],  # camaguey
+        [-75.2, 20.1],  # guantanamo
+        [-68.6, 18.6],  # punta cana
+        [-66.4, 18.2],  # central puerto rico
+        [-63.2, 18.0],  # anguilla
+        [-62.8, 17.2],  # st kitts
+        [-62.2, 16.7],  # montserrat
+        [-61.7, 16.1],  # guadeloupe
+        [-61.5, 15.4],  # dominica
+        [-61.2, 14.6],  # martinque
+        [-61.1, 13.9],  # st lucia
+        [-61.6, 13.0],  # st vincent and the grenadines
+        [-61.7, 12.3],  # grenada
+        [-61.5, 10.7],  # trinidad and tobago
+    ]
+)
+
 
 dbasins = regionmask.Regions(
-    [SO, ATL, PAC1, PAC2, ARC, IND, MED, BLK, HUD, BAL, RED, PER],
+    [
+        SO,
+        ATL,
+        PAC1,
+        PAC2,
+        ARC,
+        IND,
+        MED,
+        BLK,
+        HUD,
+        BAL,
+        RED,
+        PER,
+        SJKES,
+        OKH,
+        MEASR,
+        BER1,
+        BER2,
+        NOR,
+        GOM,
+    ],
     [
         IND_SO,
         IND_ATL,
-        IND_TMP,
+        IND_TMP1,
         IND_PAC,
         IND_ARC,
         IND_IND,
@@ -314,6 +521,13 @@ dbasins = regionmask.Regions(
         IND_BAL,
         IND_RED,
         IND_PER,
+        IND_SJKES,
+        IND_OKH,
+        IND_MEASR,
+        IND_BER,
+        IND_TMP2,
+        IND_NOR,
+        IND_GOM,
     ],
 )
 
@@ -351,7 +565,8 @@ def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=F
     lat = grid[lat]
 
     codes = dbasins.mask(lon, lat)
-    codes = xr.where(codes == IND_TMP, IND_PAC, codes)  # join PAC1 and PAC2
+    codes = xr.where(codes == IND_TMP1, IND_PAC, codes)  # join PAC1 and PAC2
+    codes = xr.where(codes == IND_TMP2, IND_BER, codes)  # join BER1 and BER2
 
     # add persian gulf to indian ocean
     if not persian:
@@ -422,8 +637,13 @@ if __name__ == "__main__":
         + "3:Pacific Ocean, 4:Arctic Ocean, "
         + "5:Indian Ocean, 6:Mediterranean Sea, "
         + "7:Black Sea, 8:Hudson Bay, 9:Baltic Sea, "
-        + "10:Red Sea, 11:Persian Gulf",
-        "flag_values": "1,2,3,4,5,6,7,8,9,10,11",
+        + "10:Red Sea, 11:Persian Gulf, "
+        + "12:Sea of Japan / Korean East Sea, "
+        + "13:Sea of Okhotsk, "
+        + "14:Marginal East Asian Sea Region, "
+        + "15:Bering Sea, 16: Nordic Seas, "
+        + "17:Gulf of Mexico",
+        "flag_values": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
     }
     Grid.to_netcdf(fileout, format="NETCDF3_64BIT")
 

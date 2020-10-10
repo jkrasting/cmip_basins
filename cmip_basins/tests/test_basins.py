@@ -26,4 +26,5 @@ def test_generate_basin_codes(persian):
     assert isinstance(codes, xr.core.dataarray.DataArray)
     codes = codes.fillna(0.0)
     assert codes.values.min() == 0
-    assert codes.values.max() in [10, 11]
+    assert codes.values.max() == 17
+    # assert codes.values.max() in [10, 11]
