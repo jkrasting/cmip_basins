@@ -59,15 +59,11 @@ ATL = np.array(
         [-42.0, 66.5],  # greenland
         [-41.0, 66.0],
         [-40.0, 65.0],  # greenland
-        [-18.6, 65.0],  # iceland
-        [15.1, 65.0],  # sweden
-        [14.49, 56.99],  # South Sweden
-        [12.56, 56.04],  # Helsinger
-        [12.29, 55.63],  # Copenhagen
-        [11.60, 55.49],  # Zealand
-        [10.72, 55.32],  # Funen
-        [9.23, 54.79],  # Flensburg
-        [9.82, 53.50],  # Hamburg
+        [-22.0, 70.5],  # ittoqqortoormiit
+        [-23.7, 64.8],  # iceland
+        [-7.2, 62.0],  # faroe
+        [-4.3, 57.5],  # inverness
+        [-0.2, 51.5],  # london
         [2.3, 47.1],  # bourges
         [-0.04, 43.07],  # lourdes
         [-5.6, 40.0],  # caceres
@@ -102,12 +98,17 @@ ATL = np.array(
 PAC1 = np.array(
     [
         [-180.0, 67.0],
-        [-179.84, 66.85],  # Russia
-        [-177.52, 66.69],  # Russia
-        [-174.10, 66.02],  # Russia
-        [-169.86, 66.09],  # Naukan, Russia
-        [-169.06, 65.80],  # Big Diomede
-        [-167.97, 65.61],  # Wales, AK
+        [-180.0, 51.3],
+        [-178.5, 51.8],  # tanaga island
+        [-176.6, 51.9],  # adak
+        [-174.3, 52.2],  # atka
+        [-169.0, 53.0],  # nikolski
+        [-166.7, 53.5],  # unalaska isalnd
+        [-164.6, 54.5],
+        [-160.2, 55.8],
+        [-158.1, 56.9],  # aniakchak
+        [-156.6, 58.1],  # becharof lake
+        [-156.4, 65.7],  # husila
         [-140.0, 65.0],
         [-106.7, 35.1],  # albequerque
         [-99.1, 19.4],  # mexico city
@@ -128,28 +129,39 @@ PAC1 = np.array(
 
 PAC2 = np.array(
     [
-        [98.8, 65.0],
-        [180.0, 67.0],
         [180.0, melbourne[1]],
         [melbourne[0], melbourne[1]],
         [melbourne[0], -30],
         [125.9, -11.2],  # darwin
-        [124.3, -9.9],  # timor
-        [123.1, -10.7],  # rote island
-        [119.95, -9.75],  # Sumba Regency
-        [117.31, -8.73],  # West Nusa
-        [116.33, -8.60],  # Lombok
-        [115.18, -8.45],  # Bali
-        [113.95, -8.09],  # east Java
-        [106.41, -6.56],  # west Java
-        [105.39, -5.25],  # south Sumatra
-        [102.19, 0.07],  # Sumatra
-        [103.85, 1.69],  # singapore
-        [98.86, 9.03],  # Thailand
-        [98.8, 9.1],  # surat thani
-        [99.07, 16.73],  # Tak, Thailand
-        [98.8, 23.0],  # mangmao
-        [95.33, 27.42],  # Tinkusia, india
+        [126.9, -8.5],  # timor
+        [137.6, -8.2],  # dolok
+        [142.9, -8.0],  # balimo
+        [146.9, -6.7],  # lae
+        [137.7, -2.0],
+        [134.9, -3.7],  # gariau
+        [132.9, -1.3],  # west papau
+        [131.0, -0.2],  # waigeo
+        [128.5, 2.3],  # morotai island
+        [126.3, 7.4],  # caraga
+        [125.3, 12.2],  # samar island
+        [122.1, 18.4],  # santa ana, luzon
+        [120.8, 21.9],  # southern tip taiwan
+        [121.9, 25.0],  # gongliao taiwan
+        [130.0, 30.8],  # kagoshima
+        [130.0, 33.6],  # fukuoka
+        [135.4, 34.7],  # osaka
+        [139.5, 37.4],  # fukushima
+        [140.0, 40.9],  # aomori
+        [139.9, 42.4],  # imakane
+        [140.2, 42.7],  # kuromatsunai
+        [141.5, 43.3],  # hokkaido
+        [145.2, 43.3],  # nemuro
+        [156.1, 50.7],  # severo-kurislk
+        [160.4, 57.4],  # central kamchatka
+        [163.7, 55.9],  # kamchatka
+        [166.0, 55.0],  # bering island
+        [173.1, 52.8],  # attu station
+        [180.0, 51.3],
     ]
 )
 
@@ -157,12 +169,17 @@ ARC = np.array(
     [
         [-180.0, 90.0],
         [180.0, 90.0],
+        [180.0, 51.3],
         [180.0, 67.0],
-        [98.8, 65.0],  # krasnoyarsk
-        [35.93, 60.93],  # Russia
+        [167.0, 63.0],
+        [165.0, 61.4],  # kamchatka
+        [164.8, 64.5],  # penzhinsky, kamchatka
+        [35.93, 60.93],  # Russi
         [21.30, 68.04],  # North Sweden
-        [15.1, 65.0],  # sweden
-        [-18.6, 65.0],  # iceland
+        [15.7, 78.3],  # svalbard
+        [-11.9, 81.5],
+        [-30.0, 78.5],
+        [-22.0, 70.5],  # ittoqqortoormiit
         [-40.0, 65.0],  # greenland
         [-41.0, 66.0],
         [-42.0, 66.5],  # greenland
@@ -176,12 +193,10 @@ ARC = np.array(
         [-93.19, 66.34],  # Keewatin, NU
         [-100.53, 64.47],  # Keewatin, NU
         [-140.0, 65.0],
-        [-167.97, 65.61],  # Wales, AK
-        [-169.06, 65.80],  # Big Diomede
-        [-169.86, 66.09],  # Naukan, Russia
-        [-174.10, 66.02],  # Russia
-        [-177.52, 66.69],  # Russia
-        [-179.84, 66.85],  # Russia
+        [-156.4, 65.7],  # husila
+        [-168.1, 65.6],  # wales
+        [-169.7, 66.0],  # naukan
+        [-180.0, 67.0],
         [-180.0, 67.0],
     ]
 )
@@ -230,7 +245,7 @@ IND = np.array(
         [117.31, -8.73],  # West Nusa
         [119.95, -9.75],  # Sumba Regency
         [123.1, -10.7],  # rote island
-        [124.3, -9.9],  # timor
+        [126.9, -8.5],  # timor
         [125.9, -11.2],  # darwin
         [melbourne[0], -30],
         [perth[0], -30],
@@ -324,7 +339,6 @@ SJKES = np.array(
         [142.4, 48.9],  # medvezh'ye
         [142.4, 53.4],  # zaliv baykal
         [140.7, 53.1],  # nikolaevsk
-        # [133.6, 43.5],  # primosky krai
         [126.4, 43.9],  # jilin city
         [126.9, 37.6],  # seoul
     ]
@@ -332,6 +346,7 @@ SJKES = np.array(
 
 OKH = np.array(
     [
+        [160.4, 57.4],  # central kamchatka
         [156.1, 50.7],  # severo-kurislk
         [145.2, 43.3],  # nemuro
         [141.5, 43.3],  # hokkaido
@@ -346,14 +361,13 @@ OKH = np.array(
         [164.8, 64.5],  # penzhinsky, kamchatka
         [165.0, 61.4],  # kamchatka
         [162.6, 60.3],  # kamchatka
-        [160.1, 58.2],  # kamchatka
-        [156.8, 55.8],  # kamchatka
     ]
 )
 
 MEASR = np.array(
     [
         [126.4, 43.9],  # jilin city
+        [117.7, 40.9],  # chengde
         [98.8, 23.0],  # mangmao
         [99.07, 16.73],  # Tak, Thailand
         [98.8, 9.1],  # surat thani
@@ -398,7 +412,8 @@ BER1 = np.array(
         [180.0, 51.3],
         [180.0, 67.0],
         [167.0, 63.0],
-        [162.4, 60.1],
+        [165.0, 61.4],  # kamchatka
+        [162.6, 60.3],  # kamchatka
         [160.4, 57.4],
     ]
 )
@@ -431,10 +446,6 @@ NOR = np.array(
         [-11.9, 81.5],
         [15.7, 78.3],  # svalbard
         [21.30, 68.04],  # North Sweden
-        # [15.1, 65.0],  # sweden
-        # [12.5, 59.3],  # karlstad
-        # [13.8, 56.2],  # skane
-        # [9.3, 55.0],  # aabenraa
         [15.1, 65.0],  # sweden
         [14.49, 56.99],  # South Sweden
         [12.56, 56.04],  # Helsinger
@@ -444,7 +455,6 @@ NOR = np.array(
         [9.23, 54.79],  # Flensburg
         [9.82, 53.50],  # Hamburg
         [2.3, 47.1],  # bourges
-        [6.1, 49.6],  # luxembourg
         [-0.2, 51.5],  # london
         [-4.3, 57.5],  # inverness
     ]
@@ -648,4 +658,4 @@ if __name__ == "__main__":
     Grid.to_netcdf(fileout, format="NETCDF3_64BIT")
 
 
-__all__ = ["generate_basin_codes"]
+__all__ = ["generate_basin_codes", "dbasins"]
