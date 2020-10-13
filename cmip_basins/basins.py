@@ -132,10 +132,9 @@ PAC2 = np.array(
         [180.0, melbourne[1]],
         [melbourne[0], melbourne[1]],
         [melbourne[0], -30],
-        [125.9, -11.2],  # darwin
-        [126.9, -8.5],  # timor
-        [137.6, -8.2],  # dolok
-        [142.9, -8.0],  # balimo
+        [142.4, -22.3],  # queensland
+        [142.4, -11.6],  # mapoon, queensland
+        [142.4, -8.7],  # bubuji, papua new guinea
         [146.9, -6.7],  # lae
         [137.7, -2.0],
         [134.9, -3.7],  # gariau
@@ -247,7 +246,7 @@ IND = np.array(
         [123.1, -10.7],  # rote island
         [126.9, -8.5],  # timor
         [125.9, -11.2],  # darwin
-        [melbourne[0], -30],
+        [131.8, -22.3],  # yuendumu, northern territory
         [perth[0], -30],
         [perth[0], cape_town[1]],
         [cape_town[0], cape_town[1]],
@@ -383,8 +382,11 @@ MEASR = np.array(
         [119.95, -9.75],  # Sumba Regency
         [123.1, -10.7],  # rote island
         [126.9, -8.5],  # timor
-        [137.6, -8.2],  # dolok
-        [142.9, -8.0],  # balimo
+        [125.9, -11.2],  # darwin
+        [131.8, -22.3],  # yuendumu, northern territory
+        [142.4, -22.3],  # queensland
+        [142.4, -11.6],  # mapoon, queensland
+        [142.4, -8.7],  # bubuji, papua new guinea
         [146.9, -6.7],  # lae
         [137.7, -2.0],
         [134.9, -3.7],  # gariau
@@ -542,6 +544,10 @@ dbasins = regionmask.Regions(
 )
 
 
+def generate_regionmask_object():
+    return dbasins
+
+
 def generate_basin_codes(grid, lon="geolon", lat="geolat", mask="wet", persian=False):
     """generate CMIP6 basin codes
 
@@ -658,4 +664,4 @@ if __name__ == "__main__":
     Grid.to_netcdf(fileout, format="NETCDF3_64BIT")
 
 
-__all__ = ["generate_basin_codes", "dbasins"]
+__all__ = ["generate_basin_codes", "generate_regionmask_object"]
