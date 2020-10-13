@@ -59,7 +59,7 @@ ATL = np.array(
         [-42.0, 66.5],  # greenland
         [-41.0, 66.0],
         [-40.0, 65.0],  # greenland
-        [-22.0, 70.5],  # ittoqqortoormiit
+        [-30.7, 69.8],
         [-23.7, 64.8],  # iceland
         [-7.2, 62.0],  # faroe
         [-4.3, 57.5],  # inverness
@@ -178,7 +178,7 @@ ARC = np.array(
         [15.7, 78.3],  # svalbard
         [-11.9, 81.5],
         [-30.0, 78.5],
-        [-22.0, 70.5],  # ittoqqortoormiit
+        [-30.7, 69.8],
         [-40.0, 65.0],  # greenland
         [-41.0, 66.0],
         [-42.0, 66.5],  # greenland
@@ -443,7 +443,7 @@ NOR = np.array(
     [
         [-7.2, 62.0],  # faroe
         [-23.7, 64.8],  # iceland
-        [-22.0, 70.5],  # ittoqqortoormiit
+        [-30.7, 69.8],
         [-30.0, 78.5],
         [-11.9, 81.5],
         [15.7, 78.3],  # svalbard
