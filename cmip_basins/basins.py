@@ -32,6 +32,9 @@ def generate_basin_codes(
     persian : bool (default=False)
         have persian gulf as separate code, else merge with indian ocean
 
+    style : str (default=cmip6)
+        select polygon set (cmip6/gfdl)
+
     Returns
     -------
 

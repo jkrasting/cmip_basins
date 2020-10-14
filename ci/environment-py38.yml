@@ -8,5 +8,6 @@ dependencies:
   - matplotlib
   - numpy
   - pytest
+  - pylint
   - regionmask
   - xarray
