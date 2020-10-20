@@ -1,3 +1,6 @@
 linters:
   black:
     fixer: false
+  flake8:
+    python: 3
+    format: pylint
