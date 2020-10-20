@@ -3,5 +3,12 @@ linters:
     fixer: false
   flake8:
     python: 3
+    max-line-length: 50
     format: pylint
     fixer: false
+    
+review:
+    fail_on_comments: true
+    
+fixers:
+    enable: false
