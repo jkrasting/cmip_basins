@@ -3,6 +3,10 @@ sudo: false
 notifications:
   email: false
 
+branches:
+  only: 
+    - master
+
 matrix:
   fast_finish: true
   include:
