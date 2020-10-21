@@ -142,12 +142,12 @@ PAC2 = np.array(
         [120.8, 21.9],  # southern tip taiwan
         [121.9, 25.0],  # gongliao taiwan
         [130.0, 30.8],  # kagoshima
-        [130.95,32.83],  # kumamoto
-        [131.1,34.19],  # Mine
-        [136.5,35.44],  # nagoya
+        [130.95, 32.83],  # kumamoto
+        [131.1, 34.19],  # Mine
+        [136.5, 35.44],  # nagoya
         [139.5, 37.4],  # fukushima
-        [140.5,40.39],  # aomori
-        [140.1,42.43],  # imakane
+        [140.5, 40.39],  # aomori
+        [140.1, 42.43],  # imakane
         [141.5, 43.3],  # hokkaido
         [145.2, 43.3],  # nemuro
         [156.1, 50.7],  # severo-kurislk
@@ -318,14 +318,14 @@ PER = np.array(
 SJKES = np.array(
     [
         [129.2, 35.2],  # tongyeong
-        [130.95,32.83],  # kumamoto
-        [131.1,34.19],  # Mine
-        [136.5,35.44],  # nagoya
+        [130.95, 32.83],  # kumamoto
+        [131.1, 34.19],  # Mine
+        [136.5, 35.44],  # nagoya
         [139.5, 37.4],  # fukushima
-        [140.5,40.39],  # aomori
-        [140.1,42.43],  # imakane
+        [140.5, 40.39],  # aomori
+        [140.1, 42.43],  # imakane
         [141.5, 43.3],  # hokkaido
-        [142.17,44.79],  # wakkanai
+        [142.17, 44.79],  # wakkanai
         [142.1, 46.1],  # shebunino
         [142.5, 47.1],  # sinegorsk
         [142.4, 48.9],  # medvezh'ye
@@ -342,7 +342,7 @@ OKH = np.array(
         [156.1, 50.7],  # severo-kurislk
         [145.2, 43.3],  # nemuro
         [141.5, 43.3],  # hokkaido
-        [142.17,44.79],  # wakkanai
+        [142.17, 44.79],  # wakkanai
         [142.1, 46.1],  # shebunino
         [142.5, 47.1],  # sinegorsk
         [142.4, 48.9],  # medvezh'ye
@@ -392,7 +392,7 @@ MEASR = np.array(
         [120.8, 21.9],  # southern tip taiwan
         [121.9, 25.0],  # gongliao taiwan
         [130.0, 30.8],  # kagoshima
-        [130.95,32.83],  # kumamoto
+        [130.95, 32.83],  # kumamoto
         [129.2, 35.2],  # tongyeong
         [126.9, 37.6],  # seoul
         [126.4, 43.9],  # jilin city
