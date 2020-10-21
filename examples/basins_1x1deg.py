@@ -18,7 +18,7 @@ grid["lat"] = xr.DataArray(lat, dims=("lat"))
 fig = plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 cmip6.dbasins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
-ax.coastlines()
+ax.coastlines(resolution='50m')
 plt.title('polygons cmip6')
 
 codes = generate_basin_codes(grid, lon="lon", lat="lat",
@@ -27,14 +27,14 @@ codes = generate_basin_codes(grid, lon="lon", lat="lat",
 plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 codes.plot(ax=ax, x="lon", y="lat", cmap="tab20")
-ax.coastlines()
+ax.coastlines(resolution='50m')
 plt.title('basin codes cmip6')
 
 # make plot GFDL codes
 fig = plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 gfdl.dbasins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
-ax.coastlines()
+ax.coastlines(resolution='50m')
 plt.title('polygons gfdl')
 
 codes = generate_basin_codes(grid, lon="lon", lat="lat",
@@ -43,7 +43,7 @@ codes = generate_basin_codes(grid, lon="lon", lat="lat",
 plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 codes.plot(ax=ax, x="lon", y="lat", cmap="tab20")
-ax.coastlines()
+ax.coastlines(resolution='50m')
 plt.title('basin codes gfdl')
 
 plt.show()
