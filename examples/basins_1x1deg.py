@@ -15,7 +15,7 @@ grid["lon"] = xr.DataArray(lon, dims=("lon"))
 grid["lat"] = xr.DataArray(lat, dims=("lat"))
 
 # make plot CMIP6 codes
-fig = plt.figure()
+plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 cmip6.dbasins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
 ax.coastlines(resolution='50m')
@@ -31,7 +31,7 @@ ax.coastlines(resolution='50m')
 plt.title('basin codes cmip6')
 
 # make plot GFDL codes
-fig = plt.figure()
+plt.figure()
 ax = plt.subplot(111, projection=ccrs.PlateCarree())
 gfdl.dbasins.plot_regions(ax=ax, add_label=False, line_kws=dict(color="r"))
 ax.coastlines(resolution='50m')
