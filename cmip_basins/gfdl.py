@@ -54,10 +54,8 @@ SO = np.array(
 ATL = np.array(
     [
         [-42.0, 66.5],  # greenland
-        [-41.0, 66.0],
-        [-40.0, 65.0],  # greenland
         [-30.7, 69.8],
-        [-23.7, 64.8],  # iceland
+        [-20.4, 64.58],  # iceland
         [-7.2, 62.0],  # faroe
         [-4.3, 57.5],  # inverness
         [-0.2, 51.5],  # london
@@ -144,12 +142,12 @@ PAC2 = np.array(
         [120.8, 21.9],  # southern tip taiwan
         [121.9, 25.0],  # gongliao taiwan
         [130.0, 30.8],  # kagoshima
-        [130.0, 33.6],  # fukuoka
-        [135.4, 34.7],  # osaka
+        [130.95,32.83],  # kumamoto
+        [131.1,34.19],  # Mine
+        [136.5,35.44],  # nagoya
         [139.5, 37.4],  # fukushima
-        [140.0, 40.9],  # aomori
-        [139.9, 42.4],  # imakane
-        [140.2, 42.7],  # kuromatsunai
+        [140.5,40.39],  # aomori
+        [140.1,42.43],  # imakane
         [141.5, 43.3],  # hokkaido
         [145.2, 43.3],  # nemuro
         [156.1, 50.7],  # severo-kurislk
@@ -172,12 +170,10 @@ ARC = np.array(
         [164.8, 64.5],  # penzhinsky, kamchatka
         [35.93, 60.93],  # Russi
         [21.30, 68.04],  # North Sweden
-        [15.7, 78.3],  # svalbard
+        [17.63, 78.7],  # svalbard
         [-11.9, 81.5],
         [-30.0, 78.5],
         [-30.7, 69.8],
-        [-40.0, 65.0],  # greenland
-        [-41.0, 66.0],
         [-42.0, 66.5],  # greenland
         [-52.46, 68.29],  # Davis strait, Greenland side
         [-62.02, 66.71],  # Cape Dyer
@@ -322,14 +318,14 @@ PER = np.array(
 SJKES = np.array(
     [
         [129.2, 35.2],  # tongyeong
-        [130.0, 33.6],  # fukuoka
-        [135.4, 34.7],  # osaka
+        [130.95,32.83],  # kumamoto
+        [131.1,34.19],  # Mine
+        [136.5,35.44],  # nagoya
         [139.5, 37.4],  # fukushima
-        [140.0, 40.9],  # aomori
-        [139.9, 42.4],  # imakane
-        [140.2, 42.7],  # kuromatsunai
+        [140.5,40.39],  # aomori
+        [140.1,42.43],  # imakane
         [141.5, 43.3],  # hokkaido
-        [141.7, 45.3],  # wakkanai
+        [142.17,44.79],  # wakkanai
         [142.1, 46.1],  # shebunino
         [142.5, 47.1],  # sinegorsk
         [142.4, 48.9],  # medvezh'ye
@@ -346,7 +342,7 @@ OKH = np.array(
         [156.1, 50.7],  # severo-kurislk
         [145.2, 43.3],  # nemuro
         [141.5, 43.3],  # hokkaido
-        [141.7, 45.3],  # wakkanai
+        [142.17,44.79],  # wakkanai
         [142.1, 46.1],  # shebunino
         [142.5, 47.1],  # sinegorsk
         [142.4, 48.9],  # medvezh'ye
@@ -396,7 +392,7 @@ MEASR = np.array(
         [120.8, 21.9],  # southern tip taiwan
         [121.9, 25.0],  # gongliao taiwan
         [130.0, 30.8],  # kagoshima
-        [130.0, 33.6],  # fukuoka
+        [130.95,32.83],  # kumamoto
         [129.2, 35.2],  # tongyeong
         [126.9, 37.6],  # seoul
         [126.4, 43.9],  # jilin city
@@ -439,11 +435,11 @@ BER2 = np.array(
 NOR = np.array(
     [
         [-7.2, 62.0],  # faroe
-        [-23.7, 64.8],  # iceland
+        [-20.4, 64.58],  # iceland
         [-30.7, 69.8],
         [-30.0, 78.5],
         [-11.9, 81.5],
-        [15.7, 78.3],  # svalbard
+        [17.63, 78.7],  # svalbard
         [21.30, 68.04],  # North Sweden
         [15.1, 65.0],  # sweden
         [14.49, 56.99],  # South Sweden
