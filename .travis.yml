@@ -30,3 +30,4 @@ install:
 script:
   - py.test cmip_basins
   - black --check cmip_basins
+  - pylint cmip_basins
