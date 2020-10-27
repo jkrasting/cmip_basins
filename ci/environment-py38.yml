@@ -5,9 +5,12 @@ dependencies:
   - python=3.8
   - black
   - cartopy
+  - esmf=8.0.0
+  - esmpy=8.0.0
   - matplotlib
   - numpy
   - pytest
   - pylint
   - regionmask
   - xarray
+  - xesmf
