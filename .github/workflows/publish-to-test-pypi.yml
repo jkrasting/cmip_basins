@@ -19,7 +19,10 @@ jobs:
         --user
     - name: Build a binary wheel and a source tarball
       run: >-
-        python setup.py sdist bdist wheel
+        python setup.py sdist bdist_wheel
+        twine check dist/*
+    - name: Check the output
+      run: >-
         twine check dist/*
     - name: Publish distribution to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
