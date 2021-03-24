@@ -14,13 +14,13 @@ build:
 requirements:
   host:
     - python>=3.6
-    - xarray>=0.16.1
-    - numpy
+    - xarray>=0.16.0
+    - numpy>=1.17
     - regionmask
   run:
     - python>=3.6
-    - xarray>=0.16.1
-    - numpy
+    - xarray>=0.16.0
+    - numpy>=1.17
     - regionmask
 
 about:
