@@ -1,0 +1,29 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: cmip-basins
+  version: {{ data['version'] }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python>=3.6
+    - xarray>=0.16.1
+    - numpy
+    - regionmask
+  run:
+    - python>=3.6
+    - xarray>=0.16.1
+    - numpy
+    - regionmask
+
+about:
+  home: https://github.com/jkrasting/cmip_basins
+  license: Public Domain
+  summary: "Generate CMIP-style ocean basin masks"
