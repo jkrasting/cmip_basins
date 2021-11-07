@@ -2,9 +2,21 @@
 
 """basins module that includes definitions and creation function """
 
-
+import sys
 import numpy as np
-import regionmask
+
+try:
+    import regionmask
+except Exception as e:
+    print("")
+    print("The `regionmask` module is a required dependecy. Try installing via:")
+    print("")
+    print("    conda install regionmask")
+    print("        -- or ---")
+    print("    pip install regionmask")
+    print("")
+    raise (e)
+
 
 # basins codes used:
 
